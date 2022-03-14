@@ -79,13 +79,3 @@ a{
   align-items: center;
   justify-content: center;
 }
-
-.card:hover{
-  box-shadow: none;
-  transition: .5s;
-}
-
-.card:active:{
-  box-shadow: none;
-  transition: .5s;
-}

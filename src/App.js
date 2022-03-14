@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Card } from 'react-bootstrap';
+import Select from 'react-select';
 import styles from './App.css'
 
 
 export default function App() {
 
   const [database, setDatabase] = useState({});
+  const [names, setNames] = useState([{}]);
   const [picture1, setPicture1] = useState('');
   const [picture2, setPicture2] = useState('');
   const [picture3, setPicture3] = useState('');
@@ -35,10 +37,15 @@ export default function App() {
 
   const [guessed, setGuessed] = useState([]);
 
+  //${response.data.league['standard'][i]['firstName']}
+
   const fetchData = () => {
     axios.get("http://data.nba.net/data/10s/prod/v1/2021/players.json")
       .then((response) => {
         setDatabase(response.data.league["standard"]);
+        for(var i=0; i<response.data.league['standard'].length; i++){
+          setNames(names => names.concat({label: `${response.data.league['standard'][i]['firstName']} ${response.data.league['standard'][i]['lastName']}`}))
+        }
       });
     }
 
@@ -61,13 +68,10 @@ export default function App() {
   <>
     <div className={'container'}>
       <h1>Wardell | NBA Player Guessing Game</h1>
-      <form onSubmit={(e)=>e.preventDefault()}>
-        <label>
-          Name:
-          <input type="text" value={value} onChange={(e) => setValue(e.target.value)} />        </label>
+          <form onSubmit={(e) => e.preventDefault()}>
+          <Select onChange={e => setValue(e.label)} options={names}/>
         <button onClick={()=>{
           setLetsGo(true);
-          console.log(database);
           for(var i=0; i<database.length; i++){
             if(database[i]['firstName'] === value.split(' ')[0] && database[i]['lastName'] === value.split(' ')[1]){
               switch(guesses){
