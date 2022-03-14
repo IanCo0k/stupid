@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/Wardell/static/css/main.e6c13ad2.css",
+    "main.js": "/Wardell/static/js/main.013d8734.js",
+    "static/js/787.718f5582.chunk.js": "/Wardell/static/js/787.718f5582.chunk.js",
+    "index.html": "/Wardell/index.html",
+    "main.e6c13ad2.css.map": "/Wardell/static/css/main.e6c13ad2.css.map",
+    "main.013d8734.js.map": "/Wardell/static/js/main.013d8734.js.map",
+    "787.718f5582.chunk.js.map": "/Wardell/static/js/787.718f5582.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.e6c13ad2.css",
+    "static/js/main.013d8734.js"
+  ]
+}
